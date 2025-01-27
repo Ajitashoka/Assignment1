@@ -1,3 +1,23 @@
+Data Loading and Preprocessing:
+The datasets (Customers.csv, Products.csv, Transactions.csv) are loaded and merged to create a unified view of customer profiles and their transactions. Features like total spend, unique products purchased, and signup date are aggregated for each customer.
+
+Feature Engineering:
+Numerical features (e.g., total spend, unique products) are normalized, and categorical features (e.g., region) are one-hot encoded to prepare for similarity calculations.
+
+Pair Generation for Training:
+Customer pairs are created with labels indicating whether two customers are similar. These pairs are used to train a model to learn customer similarity.
+
+Siamese Neural Network:
+A neural network is built to learn embeddings for customers. The embeddings help capture the "essence" of each customer's profile for comparison.
+
+Training:
+The model is trained using a contrastive loss function to minimize the distance between similar customers and maximize it for dissimilar ones.
+
+Lookalike Prediction:
+For each customer, embeddings are computed, and similarity scores are calculated to identify the top 3 most similar customers.
+
+Output:
+A CSV file (Advanced_Lookalike.csv) is generated, mapping customers to their most similar counterparts and similarity scores.
 import pandas as pd
 import torch
 import torch.nn as nn
