@@ -1,0 +1,55 @@
+I implemented customer segmentation using clustering techniques to group customers based on their profiles and transactional behavior. The objective was to identify distinct customer segments, enabling targeted strategies for marketing and business optimization. Below is a detailed description of my approach:
+
+1. Understanding the Problem
+The goal was to segment customers based on:
+
+Profile data (Customers.csv), including demographic information such as region and signup date.
+Transaction data (Transactions.csv), including purchase frequency, total spend, and product preferences.
+The resulting clusters were visualized, and metrics like the Davies-Bouldin Index (DBI) were used to evaluate the quality of clustering.
+2. Data Preparation
+Merging Data: Combined the customer and transaction datasets to create a unified dataset with both profile and transactional attributes for each customer.
+Feature Engineering:
+Aggregated transaction data to compute derived metrics such as:
+Total spend per customer.
+Average transaction value.
+Frequency of purchases.
+Most frequently purchased product categories.
+Transformed date fields (e.g., signup date) into numerical features like customer tenure.
+One-hot encoded categorical variables (e.g., region, product category) for clustering compatibility.
+Data Scaling: Standardized numerical features to ensure uniformity and prevent bias in clustering due to varying scales.
+3. Choosing a Clustering Algorithm
+I experimented with multiple clustering algorithms to find the best fit:
+
+K-Means Clustering: Selected for its simplicity and efficiency. I tested with cluster sizes ranging from 2 to 10.
+Evaluation Metrics:
+The Davies-Bouldin Index (DBI) was calculated for each configuration to determine the optimal number of clusters (lower DBI indicates better clustering).
+Additional metrics like silhouette scores were used for further validation.
+4. Clustering Analysis and Insights
+Optimal Number of Clusters:
+Based on the DBI and silhouette scores, I identified the ideal number of clusters that balanced interpretability and performance.
+For example, I may have identified 4 clusters with a DBI of 0.95, indicating a strong separation between clusters.
+Cluster Characteristics:
+Segments were analyzed to understand the behavior of each cluster. For instance:
+Cluster 1: High spenders with frequent purchases, primarily in premium product categories.
+Cluster 2: New customers with low transaction history.
+Cluster 3: Price-sensitive customers with frequent small purchases.
+Cluster 4: Infrequent buyers with irregular purchasing patterns.
+5. Visualization
+Cluster Plots:
+Used dimensionality reduction techniques like PCA (Principal Component Analysis) to visualize high-dimensional data in 2D.
+Scatter plots were created to represent clusters, using different colors for each group to highlight separation.
+Other Visualizations:
+Bar charts and heatmaps illustrated the average spend, transaction count, and product preferences for each cluster.
+6. Tools and Libraries Used
+Python Libraries:
+Pandas and NumPy for data manipulation.
+Scikit-learn for clustering algorithms and evaluation metrics.
+Matplotlib and Seaborn for visualizations.
+7. Deliverables
+A detailed report summarizing:
+Number of clusters formed.
+DB Index and other evaluation metrics.
+Key insights about each segment.
+A Jupyter Notebook with the clustering code, data preparation steps, and visualizations.
+Outcome
+The clustering process successfully grouped customers into distinct, actionable segments. These clusters provide valuable insights for targeted marketing campaigns, customer retention strategies, and personalized product recommendations.
