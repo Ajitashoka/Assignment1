@@ -1,0 +1,40 @@
+I developed a Lookalike Model leveraging a Siamese Neural Network to recommend customers with similar profiles and transaction histories. The objective was to identify the top 3 lookalike customers for the first 20 customers in the dataset, based on their similarity scores. Below is the detailed breakdown of my approach:
+
+Understanding the Problem:
+
+The task required building a model to calculate similarity between customers using their profiles (Customers.csv) and transactional behavior (Transactions.csv).
+The output was a recommendation of the top 3 similar customers for each target customer, along with their similarity scores.
+Data Preparation:
+
+Data Merging: Combined the Customers.csv and Transactions.csv files to ensure all relevant features (e.g., region, purchase history) were included for each customer.
+Feature Engineering:
+Aggregated transactional data to derive features such as total spend, average transaction value, product category preferences, and purchase frequency.
+Converted categorical variables (e.g., regions, product categories) into embeddings or one-hot encoded representations.
+Data Scaling: Normalized numerical features (e.g., spend, frequency) to ensure uniformity in the input space.
+Model Design – Siamese Neural Network:
+
+Architecture:
+The Siamese model consisted of two identical neural networks sharing the same weights.
+Each network processed customer feature vectors independently and mapped them to a latent embedding space.
+A distance metric (e.g., Euclidean or cosine distance) was computed between embeddings to measure customer similarity.
+Input Features:
+Customer demographic information (e.g., region, tenure).
+Aggregated transactional features (e.g., average spend, product preferences).
+Loss Function: Used contrastive loss to minimize the distance between embeddings of similar customers and maximize it for dissimilar customers.
+Model Training and Evaluation:
+
+Created pairs of customers labeled as "similar" or "dissimilar" based on their transaction histories and profiles.
+Split the data into training and testing sets, ensuring a balance of similar and dissimilar pairs.
+Trained the Siamese network using a learning rate scheduler for convergence and validated it using metrics such as precision, recall, and mean average precision (mAP).
+Recommendation Generation:
+
+Passed the first 20 customers (CustomerIDs: C0001-C0020) through the trained Siamese network to compute their embeddings.
+Calculated pairwise similarity scores between these embeddings and the embeddings of all other customers.
+Ranked customers based on similarity scores and retrieved the top 3 lookalike customers for each target customer.
+Deliverables:
+
+A CSV file (Lookalike.csv) containing a mapping of each target customer to their top 3 similar customers and corresponding similarity scores.
+A Jupyter Notebook detailing the implementation, including feature engineering, model training, and similarity calculations.
+Outcome:
+The Siamese-based Lookalike Model successfully identified customers with similar purchasing behaviors and profiles, providing accurate recommendations. This model lays the foundation for targeted marketing campaigns and personalized customer engagement strategies.
+
